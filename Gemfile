@@ -15,7 +15,10 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Make your rails console ouput look awesome!
-gem 'awesome_print'
+group :development do
+  # never add awesome print to production, it costs performance
+  gem 'awesome_print'
+end
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
