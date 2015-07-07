@@ -1,10 +1,10 @@
-# Exercise #10
-# Fill the seeds file with some project creation statements.
-# Create 25 projects with different names and different descriptions.
-
 # this file is: db/seeds.rb
 
+# to run the seeds, in the terminal enter:
+# rake db:seed
+
 puts " --- Deleting all Projects --- "
+# this does also delete the Entries --> dependent: :destroy
 Project.destroy_all
 
 def name_generator
@@ -13,25 +13,23 @@ def name_generator
   "#{syllables.sample}#{syllables.sample}#{syllables.sample}"
 end
 
-
-25.times do |number|
-  Project.create!(
-    name: "My name #{number}",
-    description: name_generator
+def create_entry_for(project)
+  Entry.create!(
+    project:  project,    # yes, we can pass in the object instead of the id
+    comments: name_generator,
+    minutes:  rand(0..59),
+    hours:    rand(0..10),
+    date:     rand(0..90).days.ago,
   )
 end
 
+25.times do |number|
+  project = Project.create!(
+    name: "My name #{number}",
+    description: name_generator
+  )
 
-# to run the seeds, in the terminal enter:
-
-# rake db:seed
-
-
-
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+  rand(1..6).times do
+    create_entry_for(project)
+  end
+end

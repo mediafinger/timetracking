@@ -1,6 +1,8 @@
 # app/models/project.rb
 
 class Project < ActiveRecord::Base
+  has_many :entries, dependent: :destroy  # destroy all entries when the project is destroyed
+
   validates :name, presence: true, uniqueness: true
 
   def self.iron_find(date = Date.current)
