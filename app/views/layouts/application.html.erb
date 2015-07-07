@@ -1,3 +1,5 @@
+<!-- This file is: app/views/layouts/application.html.erb -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +9,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% flash.each do |key, value| %>
+    <%= content_tag :div, value, class: "flash-info" %>
+  <% end %>
 
-<%= yield %>
+  <h1>Timetracking tool</h1>
 
+  <%= yield %>
+
+  <hr />
+  <%= link_to "List of all projects", projects_path %>
+  |
+  <%= link_to "New projects", new_project_path %>
 </body>
 </html>
