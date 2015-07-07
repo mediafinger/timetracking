@@ -1,0 +1,16 @@
+<!-- app/views/projects/index.html.erb -->
+
+<h2> All the Projects </h2>
+
+<ul>
+  <% @projects.each do |project| %>
+    <li>
+      <%= link_to project.name, project_path(project) %>
+
+      <% if project.description.present? %>
+        -
+        <%= project.description %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

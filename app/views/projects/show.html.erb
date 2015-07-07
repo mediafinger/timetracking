@@ -1,0 +1,12 @@
+<!-- app/views/projects/show.html.erb -->
+
+<p>
+  <%= @project.name %>
+
+  <% if @project.description.present? %>
+    -
+    <%= @project.description %>
+  <% end %>
+  -
+  <%= link_to "Edit", edit_project_path(@project)  %>
+</p>
