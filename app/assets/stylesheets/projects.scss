@@ -1,0 +1,15 @@
+// Place all the styles related to the projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.project {
+  box-sizing: border-box;
+  margin:  1em;
+  padding: 0.5em;
+  font-size: 1.2em;
+}
+
+.project {
+  background-color: #ccccff;
+  background: linear-gradient(to right, #ccffcc 1%, #ffffff 30%);
+}
