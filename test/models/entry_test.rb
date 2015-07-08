@@ -1,5 +1,7 @@
 require 'test_helper'
 
+# http://guides.rubyonrails.org/testing.html
+
 class EntryTest < ActiveSupport::TestCase
   def setup
     @project   = Project.create(name: "Ironhack")
@@ -33,6 +35,14 @@ class EntryTest < ActiveSupport::TestCase
     assert_raises(ActiveRecord::RecordInvalid, "Hours must be greater than 0") do
       Entry.create!(@arguments)
     end
+  end
+
+  def test_create_entry_with_minutes_equal_0
+    @arguments[:minutes] = 0
+
+    entry = Entry.new(@arguments)
+
+    assert entry.valid?
   end
 
   def test_create_entry_with_minutes_above_60

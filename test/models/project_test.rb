@@ -1,5 +1,7 @@
 require 'test_helper'
 
+# http://guides.rubyonrails.org/testing.html
+
 class ProjectTest < ActiveSupport::TestCase
   def setup
     @name = "Ironhack"
