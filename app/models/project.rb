@@ -1,6 +1,9 @@
 # app/models/project.rb
 
 class Project < ActiveRecord::Base
+  has_attached_file :logo, styles: {:medium => "300x300>", :thumb => "100x100>"}
+  validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
+
   has_many :entries, dependent: :destroy  # destroy all entries when the project is destroyed
 
   validates :name, presence: true, uniqueness: true

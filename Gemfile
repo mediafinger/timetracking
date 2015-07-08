@@ -13,6 +13,9 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# to handle file upload and image manipulation (like resizing)
+gem 'paperclip', '~> 4.2'
+
 # Make your rails console ouput look awesome!
 group :development do
   # never add awesome print to production, it costs performance

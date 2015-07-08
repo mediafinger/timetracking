@@ -1,6 +1,8 @@
 <!-- app/views/projects/show.html.erb -->
 
 <p class="project">
+  <%= image_tag @project.logo.url(:thumb) %>
+
   <%= @project.name %>
 
   <% if @project.description.present? %>

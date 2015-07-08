@@ -1,6 +1,6 @@
 <!-- views/projects/_form.html.erb -->
 
-<%= form_for(project) do |f| %>
+<%= form_for(project, html: { multipart: true }) do |f| %>
 
   <%= render 'layouts/errors', model: project %>
 
@@ -14,6 +14,12 @@
     <%= f.label :description %>
     <br />
     <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :logo %>
+    <br />
+    <%= f.file_field :logo %>
   </div>
 
   <div class="actions">
