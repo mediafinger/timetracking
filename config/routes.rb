@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # shorter way of defining routes
   # also enables to use all the Rails path helpers
   resources :projects, only: [:index, :show, :new, :create, :edit, :update] do
-    resources :entries, only: [:index, :show]
+    resources :entries, only: [:index, :show, :new]
   end
 
   # routes defined by hand (error prone)

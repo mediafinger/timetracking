@@ -1,0 +1,30 @@
+<!-- views/entries/_form.html.erb -->
+
+<%= form_for([project, entry]) do |f| %>
+
+  <%= render 'layouts/errors', model: entry %>
+
+  <div class="field">
+    <%= f.label :hours %>
+    <br />
+    <%= f.number_field :hours, min: 0 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :minutes %>
+    <br />
+    <%= f.number_field :minutes, in: 0..59 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date %>
+    <br />
+    <%= f.date_field :date, value: Time.zone.today.iso8601 %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
