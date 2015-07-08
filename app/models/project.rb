@@ -18,15 +18,7 @@ class Project < ActiveRecord::Base
     order(created_at: :desc).limit(n)
   end
 
-  def total_hours_this_month
-    date  = Date.current
-    month = date.month
-    year  = date.year
-
-    total_hours_in_month(month, year)
-  end
-
-  def total_hours_in_month(month, year)
+  def total_hours_in_month(month = Date.current.month, year = Date.current.year)
     dt = DateTime.new(year, month, 1)
 
     entries.where("date > ?", dt).where("date < ?", dt.end_of_month).sum(:hours)
