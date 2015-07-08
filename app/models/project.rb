@@ -17,4 +17,18 @@ class Project < ActiveRecord::Base
     # raise ArgumentError unless n.is_a? Integer && n.in(1..25)
     order(created_at: :desc).limit(n)
   end
+
+  def total_hours_this_month
+    date  = Date.current
+    month = date.month
+    year  = date.year
+
+    total_hours_in_month(month, year)
+  end
+
+  def total_hours_in_month(month, year)
+    dt = DateTime.new(year, month, 1)
+
+    entries.where("date > ?", dt).where("date < ?", dt.end_of_month).sum(:hours)
+  end
 end
