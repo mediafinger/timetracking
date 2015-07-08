@@ -8,4 +8,22 @@ class EntriesController < ApplicationController
     @project = Project.find(params[:project_id])
     @entry = @project.entries.new
   end
+
+  def create
+    @project = Project.find(params[:project_id])
+    @entry = @project.entries.new(entry_params)
+
+    if @entry.valid?
+      @entry.save
+      redirect_to project_entries_path(@project), notice: "Entry successfully added!"
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def entry_params
+    params.require(:entry).permit(:hours, :minutes, :date)
+  end
 end
