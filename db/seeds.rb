@@ -3,7 +3,9 @@
 # to run the seeds, in the terminal enter:
 # rake db:seed
 
+# rubocop:disable all
 puts " --- Deleting all Projects --- "
+# rubocop:enable all
 # this does also delete the Entries --> dependent: :destroy
 Project.destroy_all
 

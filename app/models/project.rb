@@ -5,7 +5,7 @@ class Project < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
-  def self.iron_find(date = Date.current)
+  def self.iron_find(date = Time.zone.today)
     order("name ASC").where("created_at > ?", date).limit(10)
   end
 
@@ -18,8 +18,8 @@ class Project < ActiveRecord::Base
     order(created_at: :desc).limit(n)
   end
 
-  def total_hours_in_month(month = Date.current.month, year = Date.current.year)
-    dt = DateTime.new(year, month, 1)
+  def total_hours_in_month(month = Time.zone.today.month, year = Time.zone.today.year)
+    dt = Time.zone.parse("#{year}-#{month}-1")
 
     entries.where("date > ?", dt).where("date < ?", dt.end_of_month).sum(:hours)
   end
