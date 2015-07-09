@@ -5,6 +5,8 @@ class Project < ActiveRecord::Base
   validates_attachment_content_type :logo, content_type: %r{\Aimage\/.*\Z}
 
   has_many :entries, dependent: :destroy  # destroy all entries when the project is destroyed
+  has_many :participations, dependent: :destroy
+  has_many :people, through: :participations
 
   validates :name, presence: true, uniqueness: true
 
