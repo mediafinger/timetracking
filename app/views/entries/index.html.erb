@@ -7,6 +7,8 @@
       <%= entry.hours %> h
       <%= entry.minutes %> m -
       <%= entry.date.strftime("%d.%m.%Y") %>
+      |
+      <%= link_to 'Delete', [@project, entry], method: :delete, data: { confirm: 'Are you sure?' } %>
     </li>
   <% end %>
 </ul>

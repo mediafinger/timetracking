@@ -21,6 +21,13 @@ class EntriesController < ApplicationController
     end
   end
 
+  def destroy
+    @project = Project.find(params[:project_id])
+    @entry = Entry.find_by(id: params[:id]).try(:destroy)
+
+    redirect_to project_entries_path(@project), notice: "Entry #{@entry.inspect} was destroyed."
+  end
+
   private
 
   def entry_params
