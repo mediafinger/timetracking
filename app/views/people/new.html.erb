@@ -1,0 +1,23 @@
+<!-- app/views/people/new.html.erb -->
+
+<%= form_for(@person) do |f| %>
+
+  <%= render 'layouts/errors', model: @person %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :project %>
+    <br />
+    <%= select_tag(:project_id, options_for_select(@projects)) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

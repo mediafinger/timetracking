@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :entries, only: [:index, :destroy, :new, :create]
   end
 
+  resources :people, only: [:new, :create]
+
   # routes defined by hand (error prone)
   # get  '/projects/new'      => 'projects#new'
   # get  '/projects/:id'      => 'projects#show'

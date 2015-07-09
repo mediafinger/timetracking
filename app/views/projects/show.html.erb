@@ -11,4 +11,11 @@
   <% end %>
 
   <%= render "links", project: @project %>
+
+  <h4>Participants: </h4>
+  <% @project.people.each do |person| %>
+    <p><%= person.name %></p>
+  <% end %>
+
+  <%= link_to "Add new participant", new_person_path %>
 </p>
